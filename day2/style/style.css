@@ -1,0 +1,118 @@
+/* =========================================
+Day 2 - Bento Grid Layout
+========================================= */
+
+/* 1. 배경 및 기본 폰트 설정 */
+body {
+    font-family: 'Pretendard', -apple-system;
+    background-color: #f0f2f5;
+    padding: 50px 20px; /* 전체 페이지에서 마진 잡는 것과 마찬가지 */
+
+    /* 헤더와 그리드를 중앙으로 배치하기 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* ---------------------------- */
+}
+
+/* 2. 헤더 스타일링 */
+.gallery-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.gallery-header h1 {
+    font-family: "DM Sans", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 16px;
+}
+
+/* 3. 그리드 컨테이너 */
+.bento-grid {
+    display: grid; /* 그리드 시작 */
+    width: 100%;
+    max-width: 1200px; /* 최대 1200px 넘어가지 않게 */
+
+    /* 가로 칸을 4등분 (1:1:1:1) 으로 나눕니다. fr은 '비율' 을 뜻해요. */
+    grid-template-columns: repeat(4, 1fr);
+
+    /* 세로 줄의 높이를 자동으로 설정 (최소 200px) */
+    grid-template-rows: minmax(200px, auto);
+
+    /* 아이템 사이의 간격 */
+    gap: 20px;
+}
+
+/* 4. 공통 아이템 스타일 (모듈화), 그리드 전체 칸을 꾸며주는 것! */ 
+.bento-item {
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 30px;
+    overflow: hidden; /* 이미지가 튀어나오지 않게 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.bento-item:hover {
+    transform: translateY(-10px);
+}
+
+/* 5. (파랑) 메인 아이템: 가로 2칸, 세로 2칸을 차지하라! */
+.item-main {
+    grid-column: span 2;
+    grid-row: span 2;
+    background-color: #2158f1;
+    color: #fff;
+}
+
+/* 6. (버튼 영역) 와이드 아이템: 가로 2칸을 차지하라! */
+.item-wide {
+    grid-column: span 2;
+    background-color: #111;
+    color: #fff;
+    flex-direction: row; /* 글자와 버튼을 가로로 */
+    justify-content: space-between;
+    align-items: center; /* 글자와 버튼 가운데 정렬 */
+}
+
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.item-wide button {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 1.125rem;
+}
+
+/* 텍스트 영역 */
+
+.item-text, .item-stat {
+    justify-content: start;
+}
+
+.item-text h3, .number {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.item-text p, .item-stat p {
+    line-height: 1.4;
+    font-size: 0.875rem;
+    color: #777;
+}
+
+.item-wide h2 {
+    font-size: 2rem;
+    
+}

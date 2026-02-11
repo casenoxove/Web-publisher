@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 보충 - 대시보드 레이아웃</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-wrap">
+
+        <aside class="sidebar"> <!-- 왼쪽 사이드 메뉴-->
+            <h2>STUDENT.LOG</h2>
+            <ul class="side-menu">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </aside>
+
+        <header class="top-header">
+            <div class="user-info">
+                <span>안녕하세요, 환영합니다! 👋</span>
+            </div>
+            <button type="button" class="logout-btn">Logout</button>
+        </header>
+
+        <main class="main-content">
+            <section class="stat-card">
+                <h3>오늘의 코딩 시간</h3>
+                <p class="number">4시간</p>
+            </section>
+
+            <section class="stat-card">
+                <h3>해결한 에러 수</h3>
+                <p class="number">12개</p>
+            </section>
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

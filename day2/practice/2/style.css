@@ -1,0 +1,98 @@
+/* =========================================
+Day 2 보충 - 대시보드 레이아웃 (Grid Areas)
+========================================= */
+
+/* 1. 기본 배경 및 여백 초기화 */
+body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    background-color: #f4f6f9;
+}
+
+/* 2. 전체를 감싸는 부모 상자 (여기가 오늘의 핵심!!) */
+.dashboard-wrap {
+    display: grid;
+    height: 100vh; /* 화면 높이를 100% 꽉 채워라! */
+    
+    /* 가로 세로를 어떻게 쪼갤지 계획을 세웁니다 */
+    grid-template-columns: 250px 1fr; /* 왼쪽 메뉴는 250px 고정, 오른쪽은 나머지 전부(1fr) */
+    grid-template-rows: 80px 1fr;     /* 위쪽 헤더는 80px 고정, 아래쪽은 나머지 전부(1fr) */
+    
+    /* 테트리스처럼 이름표를 배치합니다 */
+    grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+}
+
+/* 3. 각 영역에 이름표 달아주기 (위에서 그린 그림의 이름표와 같아야만 한다) */
+.sidebar {
+    grid-area: sidebar; /* 내 이름은 이제부터 sidebar야! */
+    background-color: #111827;
+    color: #fff;
+    padding: 30px;
+}
+
+.top-header {
+    grid-area: header; /* 내 이름은 header야! */
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex; /* 헤더 안의 인사말과 버튼을 양끝으로! */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.main-content {
+    grid-area: main; /* 내 이름은 main이야! */
+    padding: 40px;
+    display: flex; /* 통계 카드 2개를 나란히 놓기 위해 flex 사용 */
+    gap: 20px
+}
+
+/* 4. 세부 디자인 (사이드바 메뉴, 버튼, 카드 등) */
+.side-menu {
+    margin-top: 50px;
+}
+
+.side-menu li {
+    margin-bottom: 20px;
+}
+
+.side-menu a {
+    color: #9ca3af;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.side-menu a:hover {
+    color: #fff;
+}
+
+.logout-btn {
+    padding: 12px 20px;
+    background-color: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700
+}
+
+/* 메인 안의 통계 카드들 */
+.stat-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 250px;
+    box-shadow: 0 4px 60px rgba(0,0,0,0.02);
+}
+
+.stat-card h3 {
+    margin: 0 0 10px 0;
+    color: #6b7280;
+}
+
+.stat-card .number {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2158f1;
+}
