@@ -1,0 +1,160 @@
+/* 전체 페이지 높이 설정 */
+html, body {
+    height: 100%; /* body가 화면 전체 높이를 차지하게 */
+}
+
+body {
+    font-family: Pretendard, -apple-system; /* 기본 폰트 */
+    letter-spacing: -0.2px; /* 글자 간격 살짝 좁히기 */
+    color: #111;
+    background: linear-gradient(135deg, #2f7de4, #ffffff); /* 대각선 그라데이션 */
+    
+    /* 카드를 화면 정중앙에 배치 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 */
+    align-items: center; /* 세로 중앙 */
+    padding: 20px; /* 모바일에서 여백 확보 */
+}
+
+/* 카드 전체 박스 */
+.card {
+    width: 700px; /* 기본 너비 */
+    max-width: 100%; /* 작은 화면에선 줄어들게 */
+    background-color: #fff;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1); /* 부드러운 그림자 */
+    
+    /* Grid 레이아웃: 왼쪽 이미지 / 오른쪽 텍스트 */
+    display: grid;
+    grid-template-columns: 300px 1fr; /* 이미지 300px / 나머지는 텍스트 */
+    gap: 20px; /* 이미지와 텍스트 사이 간격 */
+    padding: 20px 24px; /* 카드 안쪽 여백 */
+}
+
+/* 왼쪽: 이미지 */
+.card-image {
+    width: 100%; /* 부모 박스에 꽉 차게 */
+    height: 100%; /* 세로도 꽉 차게 */
+    object-fit: cover; /* 비율 유지하면서 박스에 맞게 자르기 */
+    border-radius: 12px; /* 이미지 모서리 둥글게 */
+}
+
+/* 오른쪽: 텍스트 영역 전체 */
+.card-content {
+    display: flex;
+    flex-direction: column; /* 세로로 쌓기 (제목 → 하단 그룹) */
+    /* space-between 제거! */
+}
+
+/* 제목 (연우) - 맨 위에 단독 배치 */
+.card-title {
+    position: relative; /* ::after 쓰려면 필요 */
+    font-size: 6rem;
+    font-weight: 500;
+    margin-left: 12px;
+    color: #2158f1;
+    margin-bottom: 0; /* 기본 여백 제거 */
+}
+
+/* 제목 밑줄 */
+.card-title::after {
+    position: absolute;
+    content: ''; /* 내용 없음 (선만 그릴 거니까) */
+    left: 6px;
+    bottom: -5px;
+    width: 320px;
+    height: 1px;
+    background-color: #2158f1;
+}
+
+/* 하단 그룹 (텍스트 + 버튼) */
+.card-bottom {
+    /* 제목과 하단 그룹 사이에 여백을 주기 위해 margin-top 사용 */
+    margin-top: 138px; /* 원하는 만큼 조절하세요! */
+    
+    /* 텍스트와 버튼을 세로로 배치 */
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* 텍스트와 버튼 사이 간격 */
+}
+
+/* 설명 텍스트 */
+.card-description {
+    font-size: 0.875rem;
+    line-height: 1.6; /* 줄 간격 */
+    margin-left: 20px; /* 왼쪽 여백 */
+    color: #777777;
+}
+
+/* 버튼 */
+.card-button {
+    border: none;
+    background-color: #fff;
+    color: #2158f1;
+    font-size: 1.5rem;
+    text-transform: uppercase; /* 영어 대문자로 */
+    letter-spacing: -1.2px;
+    border-radius: 30px;
+    padding: 10px 0px;
+    transition: all 0.2s; /* 변화를 부드럽게 */
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
+    border: 2px solid #2158f1; /* 테두리 */
+}
+
+/* 버튼 hover 효과 */
+.card-button:hover {
+    background-color: #2158f1;
+    color: #fff;
+    transform: translateY(-2px); /* 살짝 위로 */
+    box-shadow: 0 8px 20px rgba(33, 88, 241, 0.3); /* 그림자 */
+}
+
+/* =========================================
+반응형 디자인 (모바일 대응)
+========================================= */
+
+/* 태블릿/모바일 (768px 이하) */
+@media (max-width: 768px) {
+    .card {
+        /* Grid를 세로로 변경 */
+        grid-template-columns: 1fr; /* 1줄로 (이미지 위 / 텍스트 아래) */
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    /* 이미지 높이 제한 */
+    .card-image {
+        height: 300px;
+    }
+    
+    /* 제목 크기 줄이기 */
+    .card-title {
+        font-size: 4rem; /* 6rem → 4rem */
+        text-align: center; /* 중앙 정렬 */
+        margin-left: 0;
+    }
+    
+    /* 밑줄도 중앙으로 */
+    .card-title::after {
+        left: 50%;
+        transform: translateX(-50%); /* 중앙 정렬 트릭 */
+        width: 200px;
+    }
+    
+    /* 하단 그룹 여백 조정 */
+    .card-bottom {
+        margin-top: 40px; /* 모바일에선 여백 줄이기 */
+    }
+    
+    /* 설명 텍스트 */
+    .card-description {
+        text-align: center; /* 중앙 정렬 */
+        margin-left: 0;
+    }
+    
+    /* 버튼 */
+    .card-button {
+        font-size: 1.5rem; /* 살짝 작게 */
+        align-self: center; /* 버튼을 중앙으로 */
+    }
+}

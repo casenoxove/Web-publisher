@@ -1,0 +1,90 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Pretendard, -apple-system;
+    letter-spacing: -0.2px;
+    color: #111;
+    background: linear-gradient(#2f7de4, #ffffff);
+}
+
+.container {
+    width: 700px;
+    height: auto;
+    background-color: #fff;
+
+    /* div 중앙 정렬 하는 방법 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* -------------------- */
+    
+    border-radius: 24px;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.06);
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 300px 400px;
+    padding: 20px 24px;
+    gap: 20px;
+}
+
+.profile img {
+    width: 300px;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.profile-content h2 {
+    position: relative;
+    font-size: 6rem;
+    font-weight: 500;
+    margin-left: 12px;
+    color: #2158f1;
+}
+
+.profile-content h2::after {
+    position: absolute;
+    content: '';
+    left: 6px;
+    bottom: -5px;
+    width: 320px;
+    height: 1px;
+    background-color: #2158f1;
+}
+
+.profile-content p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-left: 20px;
+    color: #777777;
+}
+
+.greet-btn {
+    margin-top: 20px;
+}
+
+.greet-btn button {
+    border: none;
+    background-color: #fff;
+    color: #2158f1;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: -1.2px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    transition: all 0.2s;
+}
+
+.greet-btn button:hover {
+    background-color: #2158f1;
+    color: #fff;
+}
